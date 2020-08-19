@@ -49,14 +49,29 @@ main {
 	line-height: 2;
 }
 
-.flex {
-	margin-top: 5em;
+@media (min-width: 1200px) {
+	.flex {
+		margin-top: 3em;
+	}
+}
+
+.video {
+	// width: 260px;
+	// height: 146px;
+	width: 90vw;
+	height: 50.625vw; /* 90*9/16 */
+
+	@media (min-width: 700px) {
+		width: 60vw;
+		height: 33.75vw; /* 45*9/16 */
+	}
 }
 
 @media (min-width: 1200px) {
 	.flex {
 		display: flex;
-		justify-content: space-evenly;
+		flex-direction: column;
+		justify-content: center;
 		align-items: center;
 	}
 
@@ -83,4 +98,8 @@ main {
 
 .copyright {
 	margin-top: 2em;
+}
+
+.hidden {
+	display: none;
 }

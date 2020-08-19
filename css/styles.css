@@ -51,14 +51,31 @@ main {
   line-height: 2;
 }
 
-.flex {
-  margin-top: 5em;
+@media (min-width: 1200px) {
+  .flex {
+    margin-top: 3em;
+  }
+}
+
+.video {
+  width: 90vw;
+  height: 50.625vw;
+  /* 90*9/16 */
+}
+
+@media (min-width: 700px) {
+  .video {
+    width: 60vw;
+    height: 33.75vw;
+    /* 45*9/16 */
+  }
 }
 
 @media (min-width: 1200px) {
   .flex {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
   h1 {
@@ -80,5 +97,9 @@ main {
 
 .copyright {
   margin-top: 2em;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */

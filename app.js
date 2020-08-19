@@ -4,13 +4,21 @@ let date = document.querySelector('.date');
 let explanation = document.querySelector('.explanation');
 let picture = document.querySelector('.pic');
 let title = document.querySelector('.title');
+let video = document.querySelector('.video');
 let copyright = document.querySelector('.copyright');
 let hiRes = document.querySelector('.hires');
 
 fetch(API_URL)
     .then((res) => res.json())
     .then(data => {
-        if (data.code !== 400) {
+        if (data.code !== 400 && data.media_type === 'video') {
+            video.src = data.url;
+            video.classList.toggle('hidden');
+            picture.classList.toggle('hidden');
+            date.textContent = data.date;
+            explanation.textContent = data.explanation;
+            title.textContent = data.title;
+        } else if (data.code !== 400) {
             date.textContent = data.date;
             explanation.textContent = data.explanation;
             picture.src = data.url;
@@ -19,7 +27,11 @@ fetch(API_URL)
             picture.src = 'https://picsum.photos/200';
             title.textContent = "Sorry! NASA API seems to be having some problems. Here's some random Picsum photos";
         }
-        if (data.copyright !== undefined) {
+
+        if (data.copyright === undefined) {
+            copyright.innerHTML = '&copy; NASA';
+
+        } else {
             copyright.innerHTML = '&copy; ' + data.copyright;
         }
 
